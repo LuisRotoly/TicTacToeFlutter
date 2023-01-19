@@ -132,7 +132,8 @@ class _MyHomePageState extends State<MyHomePage> {
                       Navigator.of(context).pushReplacement(
                         MaterialPageRoute(
                           builder: (BuildContext context) {
-                            return GamePage(userName: input, userName2: input2);
+                            return GamePage(
+                                userName1: input, userName2: input2);
                           },
                         ),
                       );
