@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'box.dart';
 
 class GameBoard extends StatefulWidget {
   const GameBoard({
@@ -19,51 +20,41 @@ class GameBoard extends StatefulWidget {
 }
 
 class _GameBoardState extends State<GameBoard> {
-  List icons = [
-    const Icon(Icons.clear_outlined),
-    const Icon(Icons.circle_outlined),
+  List iconBox = [
+    const Icon(Icons.favorite, color: Colors.grey),
+    const Icon(Icons.favorite, color: Colors.grey),
+    const Icon(Icons.favorite, color: Colors.grey),
+    const Icon(Icons.favorite, color: Colors.grey),
+    const Icon(Icons.favorite, color: Colors.grey),
+    const Icon(Icons.favorite, color: Colors.grey),
+    const Icon(Icons.favorite, color: Colors.grey),
+    const Icon(Icons.favorite, color: Colors.grey),
+    const Icon(Icons.favorite, color: Colors.grey),
   ];
-  var iconSelector0 = const Icon(Icons.favorite, color: Colors.grey);
-  var iconSelector1 = const Icon(Icons.favorite, color: Colors.grey);
-  var iconSelector2 = const Icon(Icons.favorite, color: Colors.grey);
-  var iconSelector3 = const Icon(Icons.favorite, color: Colors.grey);
-  var iconSelector4 = const Icon(Icons.favorite, color: Colors.grey);
-  var iconSelector5 = const Icon(Icons.favorite, color: Colors.grey);
-  var iconSelector6 = const Icon(Icons.favorite, color: Colors.grey);
-  var iconSelector7 = const Icon(Icons.favorite, color: Colors.grey);
-  var iconSelector8 = const Icon(Icons.favorite, color: Colors.grey);
-  var box0 = 0;
-  var box1 = 0;
-  var box2 = 0;
-  var box3 = 0;
-  var box4 = 0;
-  var box5 = 0;
-  var box6 = 0;
-  var box7 = 0;
-  var box8 = 0;
+  List box = [0, 0, 0, 0, 0, 0, 0, 0, 0];
   int _countMoves = 0;
   int _playerTurn = 1;
 
   void won() {
-    if (box0 == 1 && box1 == 1 && box2 == 1 ||
-        box3 == 1 && box4 == 1 && box5 == 1 ||
-        box6 == 1 && box7 == 1 && box8 == 1 ||
-        box0 == 1 && box3 == 1 && box6 == 1 ||
-        box1 == 1 && box4 == 1 && box7 == 1 ||
-        box2 == 1 && box5 == 1 && box8 == 1 ||
-        box0 == 1 && box4 == 1 && box8 == 1 ||
-        box2 == 1 && box4 == 1 && box6 == 1) {
+    if (box[0] == 1 && box[1] == 1 && box[2] == 1 ||
+        box[3] == 1 && box[4] == 1 && box[5] == 1 ||
+        box[6] == 1 && box[7] == 1 && box[8] == 1 ||
+        box[0] == 1 && box[3] == 1 && box[6] == 1 ||
+        box[1] == 1 && box[4] == 1 && box[7] == 1 ||
+        box[2] == 1 && box[5] == 1 && box[8] == 1 ||
+        box[0] == 1 && box[4] == 1 && box[8] == 1 ||
+        box[2] == 1 && box[4] == 1 && box[6] == 1) {
       widget.addPlayerWonGames("player1");
       showAlert(widget.userName1);
       _clearInputs();
-    } else if (box0 == 2 && box1 == 2 && box2 == 2 ||
-        box3 == 2 && box4 == 2 && box5 == 2 ||
-        box6 == 2 && box7 == 2 && box8 == 2 ||
-        box0 == 2 && box3 == 2 && box6 == 2 ||
-        box1 == 2 && box4 == 2 && box7 == 2 ||
-        box2 == 2 && box5 == 2 && box8 == 2 ||
-        box0 == 2 && box4 == 2 && box8 == 2 ||
-        box2 == 2 && box4 == 2 && box6 == 2) {
+    } else if (box[0] == 2 && box[1] == 2 && box[2] == 2 ||
+        box[3] == 2 && box[4] == 2 && box[5] == 2 ||
+        box[6] == 2 && box[7] == 2 && box[8] == 2 ||
+        box[0] == 2 && box[3] == 2 && box[6] == 2 ||
+        box[1] == 2 && box[4] == 2 && box[7] == 2 ||
+        box[2] == 2 && box[5] == 2 && box[8] == 2 ||
+        box[0] == 2 && box[4] == 2 && box[8] == 2 ||
+        box[2] == 2 && box[4] == 2 && box[6] == 2) {
       widget.addPlayerWonGames("player2");
       showAlert(widget.userName2);
       _clearInputs();
@@ -113,27 +104,33 @@ class _GameBoardState extends State<GameBoard> {
   }
 
   void _clearInputs() {
-    iconSelector0 = const Icon(Icons.favorite, color: Colors.grey);
-    iconSelector1 = const Icon(Icons.favorite, color: Colors.grey);
-    iconSelector2 = const Icon(Icons.favorite, color: Colors.grey);
-    iconSelector3 = const Icon(Icons.favorite, color: Colors.grey);
-    iconSelector4 = const Icon(Icons.favorite, color: Colors.grey);
-    iconSelector5 = const Icon(Icons.favorite, color: Colors.grey);
-    iconSelector6 = const Icon(Icons.favorite, color: Colors.grey);
-    iconSelector7 = const Icon(Icons.favorite, color: Colors.grey);
-    iconSelector8 = const Icon(Icons.favorite, color: Colors.grey);
-    box0 = 0;
-    box1 = 0;
-    box2 = 0;
-    box3 = 0;
-    box4 = 0;
-    box5 = 0;
-    box6 = 0;
-    box7 = 0;
-    box8 = 0;
+    iconBox = [
+      const Icon(Icons.favorite, color: Colors.grey),
+      const Icon(Icons.favorite, color: Colors.grey),
+      const Icon(Icons.favorite, color: Colors.grey),
+      const Icon(Icons.favorite, color: Colors.grey),
+      const Icon(Icons.favorite, color: Colors.grey),
+      const Icon(Icons.favorite, color: Colors.grey),
+      const Icon(Icons.favorite, color: Colors.grey),
+      const Icon(Icons.favorite, color: Colors.grey),
+      const Icon(Icons.favorite, color: Colors.grey),
+    ];
+    box = [0, 0, 0, 0, 0, 0, 0, 0, 0];
     _countMoves = 0;
     _playerTurn = 1;
     widget.whitchPlayerTurn(1);
+  }
+
+  void _changeBoxValue(int boxNumber, int value) {
+    setState(() {
+      box[boxNumber] = value;
+    });
+  }
+
+  void _changeIconBox(int iconNumber, Icon value) {
+    setState(() {
+      iconBox[iconNumber] = value;
+    });
   }
 
   @override
@@ -143,24 +140,15 @@ class _GameBoardState extends State<GameBoard> {
         Row(
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
-            IconButton(
-              onPressed: () {
-                if (box0 == 0) {
-                  box0 = _playerTurn;
-                  if (_playerTurn == 1) {
-                    setState(() {
-                      iconSelector0 = icons[0];
-                    });
-                  } else {
-                    setState(() {
-                      iconSelector0 = icons[1];
-                    });
-                  }
-                  _boxClicked();
-                }
-              },
-              iconSize: 60.0,
-              icon: iconSelector0,
+            Box(
+              playerTurn: _playerTurn,
+              boxNumber: 0,
+              boxValues: box,
+              iconBox: iconBox[0],
+              iconNumber: 0,
+              boxClicked: _boxClicked,
+              changeBoxValue: _changeBoxValue,
+              changeIconBox: _changeIconBox,
             ),
             const SizedBox(
               height: 60.0,
@@ -169,24 +157,15 @@ class _GameBoardState extends State<GameBoard> {
                 thickness: 5,
               ),
             ),
-            IconButton(
-              onPressed: () {
-                if (box1 == 0) {
-                  box1 = _playerTurn;
-                  if (_playerTurn == 1) {
-                    setState(() {
-                      iconSelector1 = icons[0];
-                    });
-                  } else {
-                    setState(() {
-                      iconSelector1 = icons[1];
-                    });
-                  }
-                  _boxClicked();
-                }
-              },
-              iconSize: 60.0,
-              icon: iconSelector1,
+            Box(
+              playerTurn: _playerTurn,
+              boxNumber: 1,
+              boxValues: box,
+              iconBox: iconBox[1],
+              iconNumber: 1,
+              boxClicked: _boxClicked,
+              changeBoxValue: _changeBoxValue,
+              changeIconBox: _changeIconBox,
             ),
             const SizedBox(
               height: 60.0,
@@ -195,24 +174,15 @@ class _GameBoardState extends State<GameBoard> {
                 thickness: 5,
               ),
             ),
-            IconButton(
-              onPressed: () {
-                if (box2 == 0) {
-                  box2 = _playerTurn;
-                  if (_playerTurn == 1) {
-                    setState(() {
-                      iconSelector2 = icons[0];
-                    });
-                  } else {
-                    setState(() {
-                      iconSelector2 = icons[1];
-                    });
-                  }
-                  _boxClicked();
-                }
-              },
-              iconSize: 60.0,
-              icon: iconSelector2,
+            Box(
+              playerTurn: _playerTurn,
+              boxNumber: 2,
+              boxValues: box,
+              iconBox: iconBox[2],
+              iconNumber: 2,
+              boxClicked: _boxClicked,
+              changeBoxValue: _changeBoxValue,
+              changeIconBox: _changeIconBox,
             ),
           ],
         ),
@@ -227,24 +197,15 @@ class _GameBoardState extends State<GameBoard> {
         Row(
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
-            IconButton(
-              onPressed: () {
-                if (box3 == 0) {
-                  box3 = _playerTurn;
-                  if (_playerTurn == 1) {
-                    setState(() {
-                      iconSelector3 = icons[0];
-                    });
-                  } else {
-                    setState(() {
-                      iconSelector3 = icons[1];
-                    });
-                  }
-                  _boxClicked();
-                }
-              },
-              iconSize: 60.0,
-              icon: iconSelector3,
+            Box(
+              playerTurn: _playerTurn,
+              boxNumber: 3,
+              boxValues: box,
+              iconBox: iconBox[3],
+              iconNumber: 3,
+              boxClicked: _boxClicked,
+              changeBoxValue: _changeBoxValue,
+              changeIconBox: _changeIconBox,
             ),
             const SizedBox(
               height: 60.0,
@@ -253,24 +214,15 @@ class _GameBoardState extends State<GameBoard> {
                 thickness: 5,
               ),
             ),
-            IconButton(
-              onPressed: () {
-                if (box4 == 0) {
-                  box4 = _playerTurn;
-                  if (_playerTurn == 1) {
-                    setState(() {
-                      iconSelector4 = icons[0];
-                    });
-                  } else {
-                    setState(() {
-                      iconSelector4 = icons[1];
-                    });
-                  }
-                  _boxClicked();
-                }
-              },
-              iconSize: 60.0,
-              icon: iconSelector4,
+            Box(
+              playerTurn: _playerTurn,
+              boxNumber: 4,
+              boxValues: box,
+              iconBox: iconBox[4],
+              iconNumber: 4,
+              boxClicked: _boxClicked,
+              changeBoxValue: _changeBoxValue,
+              changeIconBox: _changeIconBox,
             ),
             const SizedBox(
               height: 60.0,
@@ -279,24 +231,15 @@ class _GameBoardState extends State<GameBoard> {
                 thickness: 5,
               ),
             ),
-            IconButton(
-              onPressed: () {
-                if (box5 == 0) {
-                  box5 = _playerTurn;
-                  if (_playerTurn == 1) {
-                    setState(() {
-                      iconSelector5 = icons[0];
-                    });
-                  } else {
-                    setState(() {
-                      iconSelector5 = icons[1];
-                    });
-                  }
-                  _boxClicked();
-                }
-              },
-              iconSize: 60.0,
-              icon: iconSelector5,
+            Box(
+              playerTurn: _playerTurn,
+              boxNumber: 5,
+              boxValues: box,
+              iconBox: iconBox[5],
+              iconNumber: 5,
+              boxClicked: _boxClicked,
+              changeBoxValue: _changeBoxValue,
+              changeIconBox: _changeIconBox,
             ),
           ],
         ),
@@ -311,24 +254,15 @@ class _GameBoardState extends State<GameBoard> {
         Row(
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
-            IconButton(
-              onPressed: () {
-                if (box6 == 0) {
-                  box6 = _playerTurn;
-                  if (_playerTurn == 1) {
-                    setState(() {
-                      iconSelector6 = icons[0];
-                    });
-                  } else {
-                    setState(() {
-                      iconSelector6 = icons[1];
-                    });
-                  }
-                  _boxClicked();
-                }
-              },
-              iconSize: 60.0,
-              icon: iconSelector6,
+            Box(
+              playerTurn: _playerTurn,
+              boxNumber: 6,
+              boxValues: box,
+              iconBox: iconBox[6],
+              iconNumber: 6,
+              boxClicked: _boxClicked,
+              changeBoxValue: _changeBoxValue,
+              changeIconBox: _changeIconBox,
             ),
             const SizedBox(
               height: 60.0,
@@ -337,24 +271,15 @@ class _GameBoardState extends State<GameBoard> {
                 thickness: 5,
               ),
             ),
-            IconButton(
-              onPressed: () {
-                if (box7 == 0) {
-                  box7 = _playerTurn;
-                  if (_playerTurn == 1) {
-                    setState(() {
-                      iconSelector7 = icons[0];
-                    });
-                  } else {
-                    setState(() {
-                      iconSelector7 = icons[1];
-                    });
-                  }
-                  _boxClicked();
-                }
-              },
-              iconSize: 60.0,
-              icon: iconSelector7,
+            Box(
+              playerTurn: _playerTurn,
+              boxNumber: 7,
+              boxValues: box,
+              iconBox: iconBox[7],
+              iconNumber: 7,
+              boxClicked: _boxClicked,
+              changeBoxValue: _changeBoxValue,
+              changeIconBox: _changeIconBox,
             ),
             const SizedBox(
               height: 60.0,
@@ -363,24 +288,15 @@ class _GameBoardState extends State<GameBoard> {
                 thickness: 5,
               ),
             ),
-            IconButton(
-              onPressed: () {
-                if (box8 == 0) {
-                  box8 = _playerTurn;
-                  if (_playerTurn == 1) {
-                    setState(() {
-                      iconSelector8 = icons[0];
-                    });
-                  } else {
-                    setState(() {
-                      iconSelector8 = icons[1];
-                    });
-                  }
-                  _boxClicked();
-                }
-              },
-              iconSize: 60.0,
-              icon: iconSelector8,
+            Box(
+              playerTurn: _playerTurn,
+              boxNumber: 8,
+              boxValues: box,
+              iconBox: iconBox[8],
+              iconNumber: 8,
+              boxClicked: _boxClicked,
+              changeBoxValue: _changeBoxValue,
+              changeIconBox: _changeIconBox,
             ),
           ],
         ),

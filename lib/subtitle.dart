@@ -16,7 +16,7 @@ class Subtitle extends StatelessWidget {
       Row(
         children: [
           Text(
-            "$userName1: ",
+            "$userName1:",
             style: const TextStyle(
               color: Colors.white,
               fontSize: 22.0,
@@ -32,7 +32,7 @@ class Subtitle extends StatelessWidget {
       Row(
         children: [
           Text(
-            "$userName2: ",
+            "$userName2:",
             style: const TextStyle(
               color: Colors.white,
               fontSize: 22.0,
